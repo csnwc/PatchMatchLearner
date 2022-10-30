@@ -1,0 +1,32 @@
+# config_patch_match_train.yaml
+seed_everything: 42
+trainer:
+    default_root_dir: "./data/output"
+    devices: 1
+    accelerator: "cpu"
+    # strategy: "ddp_find_unused_parameters_false"
+    max_epochs: 20
+    callbacks:
+      - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+        init_args:
+          save_weights_only: True
+          mode: "min"
+          monitor: "val_mse_loss"
+      - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+        init_args:
+          logging_interval: "epoch"
+
+model:
+    input_dim: 26
+    output_dim: 2
+    bias: true
+    learning_rate: 1e-4
+    l1_strength: 0.0
+    l2_strength: 0.0
+data:
+    data_dir: "./data"
+    batch_size: 64
+    num_workers: 0
+    shuffle: false
+ 
+ckpt_path: null

@@ -1,0 +1,26 @@
+# config_patch_match_train.yaml
+seed_everything: 42
+trainer:
+    logger: false
+    devices: 1
+    accelerator: "cpu"
+    max_epochs: -1
+    callbacks:
+      - class_path: dev.patch_match_mnist_dev.InferenceWriter
+        init_args:
+          output_path: "./data/output"
+          export_box_overlay: true
+
+
+model:
+    input_dim: 26
+    top_k: 16
+
+data:
+    data_dir: "./data"
+    predict_dir: "./images"
+    batch_size: 4
+    num_workers: 0
+    shuffle: false
+ 
+ckpt_path: "./data/output/lightning_logs/version_0/checkpoints/epoch=19-step=1880.ckpt"
