@@ -69,4 +69,4 @@ data:
   pin_memory: true
   drop_last: false
 return_predictions: null
-ckpt_path: ./data/output/lightning_logs/version_0/checkpoints/epoch=19-step=1880.ckpt
+ckpt_path: ./data/output/lightning_logs/version_3/checkpoints/epoch=18-step=1786.ckpt
