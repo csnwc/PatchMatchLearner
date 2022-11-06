@@ -12,7 +12,9 @@ This demonstrator uses [PyTorch-Lightning](https://www.pytorchlightning.ai/) in 
 
 Single spatio-temporal offsets are used but extensions to multi-space-time scale are straight forward, see [kornia dog_response](https://kornia.readthedocs.io/en/latest/feature.html) for example. Output consists of boxes; green for 1 pixel shift, red for change probably greater than 1 pixel overlay in *./data/output/topk_diffs*.
 
-Predict frames are expect to be ordered as frame_1, frame_2, ..., frame_n.
+![Patch matches](topk16_view_0000_0000.jpg)
+
+Predict frames are expected to be ordered as frame_1, frame_2, ..., frame_n.
 
 ## Install
 
@@ -24,23 +26,11 @@ git clone https://github.com/davegdtec/PatchMatchLearner.git
 cd .\PatchMatchLearner\
 ```
 
-*If you are installing on wsl check [this](https://github.com/davegdtec/PatchMatchLearner/tree/main/utils/install_wsl.md) first.*
-
-```bash
-py -m venv venv
-```
-
-or
+*If you are installing on wsl check [this](https://github.com/davegdtec/PatchMatchLearner/blob/main/doc/install_wsl.md) first.* For windows replace python3 with py.
 
 ```bash
 python3 -m venv venv
 ```
-
-```bash
-.\venv\Scripts\Activate.ps1
-```
-
-or
 
 ```bash
 source venv/bin/activate
@@ -75,7 +65,7 @@ The training data and montaged views of the mnist sub-set and shifted pairs are 
 ## Train
 
 ```bash
-py ./main_cli/main_patch_match_train.py fit --config ./configs/config_patch_match_train.yaml
+python3 ./main_cli/main_patch_match_train.py fit --config ./configs/config_patch_match_train.yaml
 ```
 
 or
