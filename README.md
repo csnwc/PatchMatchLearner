@@ -44,17 +44,17 @@ pip3 install -r ./requirements.txt
 python3 setup.py develop
 ```
 
+System check:
+
+```bash
+python3 utils/sys_check.py
+```
+
 ## Run
 
 A dev example is provided in *./dev/patch_match_mnist_dev.py* which is helpful for debug and visualization. Otherwise run from command line.
 
 Execute an initial install run:
-
-```bash
-python3 ./dev/patch_match_mnist_dev.py --visualize_shifts True
-```
-
-or
 
 ```bash
 python3 ./dev/patch_match_mnist_dev.py --visualize_shifts True
@@ -78,12 +78,6 @@ python3 ./main_cli/main_patch_match_train.py fit --config ./configs/config_patch
 ## Prediction
 
 Note; edit the predict config to point to the checkpoint you want to use or specify it on the command line with the *./dev/patch_match_mnist_dev.py* version (or add to boiler plate...).
-
-```bash
-py ./main_cli/main_patch_match_predict.py predict --config ./configs/config_patch_match_predict_cows.yaml
-```
-
-or
 
 ```bash
 python3 ./main_cli/main_patch_match_predict.py predict --config ./configs/config_patch_match_predict_cows.yaml

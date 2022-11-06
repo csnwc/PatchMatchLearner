@@ -30,7 +30,7 @@ sudo apt install python3-pip
 python -m pip install --upgrade pip need to do this in venv
 ```
 
-close windoe, oen new ubuntu-18.04
+close window, open new ubuntu-18.04
 
 Th pip install [upgrade](https://stackoverflow.com/questions/64517366/python-error-while-installing-matplotlib) is important and must be done in the venv.
 
@@ -40,7 +40,7 @@ sudo update-alternatives --config python3
 
 switch back to python3.6
 
-do:
+do these in the venv?:
 
 sudo apt update
 
@@ -48,4 +48,18 @@ sudo apt-get update
 
 switch to python3.8 (select the auto version)
 
-THEN create venv! If that works, check your --versions and it should be OK to procede with installing the requirements. 
+Check your --versions and it should be OK to procede with installing the requirements.
+
+Run:
+
+```bash
+utils/sys_check.py
+```
+
+Then try the:
+
+```bash
+python3 ./dev/patch_match_mnist_dev.py --visualize_shifts True
+```
+
+If you get E modult apt-get not found or similar re-try some of abov e.g. re-sync clock, update pip3, swith to python3.8 in venv...
