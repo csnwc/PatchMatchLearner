@@ -24,6 +24,8 @@ git clone https://github.com/davegdtec/PatchMatchLearner.git
 cd .\PatchMatchLearner\
 ```
 
+*If you are installing on wsl check [this](https://github.com/davegdtec/PatchMatchLearner/tree/main/utils/install_wsl.md) first.*
+
 ```bash
 py -m venv venv
 ```
@@ -31,7 +33,7 @@ py -m venv venv
 or
 
 ```bash
-python3 -m venv /path/to/new/virtual/environment
+python3 -m venv venv
 ```
 
 ```bash
@@ -49,7 +51,7 @@ pip3 install -r ./requirements.txt
 ```
 
 ```bash
-python setup.py develop
+python3 setup.py develop
 ```
 
 ## Run
@@ -59,7 +61,7 @@ A dev example is provided in *./dev/patch_match_mnist_dev.py* which is helpful f
 Execute an initial install run:
 
 ```bash
-py ./dev/patch_match_mnist_dev.py --visualize_shifts True
+python3 ./dev/patch_match_mnist_dev.py --visualize_shifts True
 ```
 
 or
@@ -89,6 +91,12 @@ Note; edit the predict config to point to the checkpoint you want to use or spec
 
 ```bash
 py ./main_cli/main_patch_match_predict.py predict --config ./configs/config_patch_match_predict_cows.yaml
+```
+
+or
+
+```bash
+python3 ./main_cli/main_patch_match_predict.py predict --config ./configs/config_patch_match_predict_cows.yaml
 ```
 
 View *./data/output/topk_diffs*.
