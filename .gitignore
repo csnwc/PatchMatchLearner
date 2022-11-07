@@ -9,6 +9,8 @@ data/
 # vscode
 .vscode/
 .vscode
+vscode
+vscode/
 
 # C extensions
 *.so
