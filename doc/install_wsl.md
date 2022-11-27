@@ -1,65 +1,19 @@
-# Install Helpers
+# Install for wsl2
 
-# wsl
-
-If you haven't used wsl for a while..., and [forgotten your passwd](https://askubuntu.com/questions/931940/unable-to-change-the-root-password-in-windows-10-wsl)!
-
-Run the follow commands if there are issues installing [python3](https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-8-on-ubuntu-18-04-lts/), venv, etc before creating the venv:
+Install Ubuntu-20.04, then:
 
 ```bash
-sudo hwclock --hctosys
-
 sudo apt update
+```
 
+```bash
 sudo apt upgrade
 ```
 
 ```bash
-sudo apt-get install python3.8
-```
-
-but follow [this python3 install](https://www.itsupportwale.com/blog/how-to-upgrade-to-python-3-8-on-ubuntu-18-04-lts/) to make sure set up is correct"
-
-Then:
-
-```bash
 sudo apt-get install python3.8-venv
+```
 
+```bash
 sudo apt install python3-pip
-
-python -m pip install --upgrade pip need to do this in venv
 ```
-
-close window, open new ubuntu-18.04
-
-Th pip install [upgrade](https://stackoverflow.com/questions/64517366/python-error-while-installing-matplotlib) is important and must be done in the venv.
-
-BUT
-
-sudo update-alternatives --config python3
-
-switch back to python3.6
-
-do these in the venv?:
-
-sudo apt update
-
-sudo apt-get update
-
-switch to python3.8 (select the auto version)
-
-Check your --versions and it should be OK to procede with installing the requirements.
-
-Run:
-
-```bash
-utils/sys_check.py
-```
-
-Then try the:
-
-```bash
-python3 ./dev/patch_match_mnist_dev.py --visualize_shifts True
-```
-
-If you get E modult apt-get not found or similar re-try some of abov e.g. re-sync clock, update pip3, swith to python3.8 in venv...
