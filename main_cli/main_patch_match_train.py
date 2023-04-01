@@ -6,5 +6,6 @@ from utils import pairdatamodule
 cli = LightningCLI(
         model_class=patch_matcher.PML,
         datamodule_class=pairdatamodule.PairDataModule,
-        save_config_overwrite=True,
+        save_config_callback=None
+        # save_config_overwrite=True,
     )

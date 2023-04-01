@@ -6,6 +6,12 @@ import torchvision
 import pytorch_lightning
 import pl_bolts
 
+with open("/etc/os-release", "rt") as fp:
+    os_release = fp.readlines()
+os_release = [line.rstrip() for line in os_release]
+
+print(f"/etc/os-release:\n{json.dumps(os_release, indent=2)}")
+
 print(f"sys.path:\n{json.dumps(sys.path, indent=4)}")
 
 print(f"Torch version: {torch.__version__}")
