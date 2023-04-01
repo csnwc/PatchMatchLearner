@@ -27,6 +27,7 @@ class PML(LightningModule):
         self.save_hyperparameters()
         self.optimizer = optimizer
         # self.optimizer = self.configure_optimizers()
+        self.validation_step_outputs = []
         
         self.conv1 = nn.Conv3d(1, 8, (2, 3, 3), stride=1)
         self.conv2 = nn.Conv2d(8, 4 , 3, stride=2)
@@ -61,19 +62,24 @@ class PML(LightningModule):
             loss += self.hparams.l2_strength * l2_reg
 
         loss /= x.size(0)
-
-        self.log("train_mse_loss", loss)
+        self.log("train_mse_loss", loss, batch_size=batch[0].shape[0])
         return loss
 
     def validation_step(self, batch: Tuple[Tensor, Tensor], batch_idx: int) -> Dict[str, Tensor]:
         x, y = batch[0], batch[1]
         y_hat = self(x)
-        return {"val_loss": F.mse_loss(y_hat, y)}
+        loss = F.mse_loss(y_hat, y)
+        self.validation_step_outputs.append(loss)
+        self.log("val_mse_loss", loss, batch_size=batch[0].shape[0])
+        return {"val_mse_loss": loss}
 
-    def validation_epoch_end(self, outputs: List[Dict[str, Tensor]]) -> Dict[str, Tensor]:
-        val_loss = torch.stack([x["val_loss"] for x in outputs]).mean()
-        self.log("val_mse_loss", val_loss, sync_dist=True)
-        return # {"val_loss": val_loss, "log": tensorboard_logs, "progress_bar": progress_bar_metrics}
+    def on_validation_epoch_end(self):
+        # val_loss = torch.stack([x["val_loss"] for x in outputs]).mean()
+        ## https://github.com/Lightning-AI/lightning/pull/16520
+        epoch_average = torch.stack(self.validation_step_outputs).mean()
+        self.log("validation_epoch_average", epoch_average, on_epoch=True, sync_dist=True)
+        self.validation_step_outputs.clear()  # free memory
+        return
 
     def test_step(self, batch: Tuple[Tensor, Tensor], batch_idx: int) -> Dict[str, Tensor]:
         x, y = batch
