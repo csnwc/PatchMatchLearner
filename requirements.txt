@@ -76,7 +76,7 @@ packaging==23.0
 pandas==1.5.3
 panel==0.14.4
 param==1.13.0
--e git+https://github.com/davegdtec/PatchMatchLearner.git@13dd3bef964227b3197c648028e3bf51759fedfb#egg=patchmatcher
+-e git+https://github.com/davegdtec/PatchMatchLearner.git@d4c5fdbff792dc88e98674fd1bb5de411dbcf672#egg=patchmatcher
 pbr==5.11.1
 Pillow==9.4.0
 pkg_resources==0.0.0

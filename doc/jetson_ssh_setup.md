@@ -207,3 +207,8 @@ Still get lots of warnings but it works.
 [Checkout and push to a new branch](https://stackoverflow.com/questions/52231262/how-to-push-a-new-branch-in-git)
 
 
+This is magic:
+
+```bash
+https://pypi.org/project/jetson-stats/
+```
