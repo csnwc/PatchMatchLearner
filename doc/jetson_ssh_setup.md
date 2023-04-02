@@ -212,3 +212,7 @@ This is magic:
 ```bash
 https://pypi.org/project/jetson-stats/
 ```
+
+A venv was created in PatchMatchLeaner test repo. It seems that this can be reused locally once the usual activation is done; *source venv/bin/activate*.
+
+TODO wotk out re-work out GitHub personal acces token so that I can clone private repo to jetsonnano.
